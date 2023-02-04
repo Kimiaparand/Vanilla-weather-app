@@ -46,7 +46,7 @@ li ::first-letter {
 .weather-temperature strong {
   color: rgb(33, 33, 33);
   line-height: 1;
-  font-size: 64px;
+  font-size: 63px;
   font-weight: 400;
 }
 .weather-temperature .units {
