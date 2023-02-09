@@ -21,6 +21,32 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForcast() {
+  let forcastElement = document.querySelector("#forcast");
+  forcastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `<div class="col-2">
+                <div class="weather-forcast-date">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/10d@2x.png"
+                  alt=""
+                  width="46"
+                />
+                <div class="weather-forcast-temperatures">
+                  <span class="weather-forcast-temperatures-max"> 18° </span>
+                  <span class="weather-forcast-temperatures-min"> 12°</span>
+                </div>
+              
+            </div>`;
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+}
+
 function dispalyTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -88,3 +114,5 @@ fahrenheitLink.addEventListener("click", showfahrenheitTemp);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showcelsiusTemp);
 search("Moscow");
+
+displayForcast();
