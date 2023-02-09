@@ -21,7 +21,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForcast() {
+function displayForcast(response) {
   let forcastElement = document.querySelector("#forcast");
   forcastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
@@ -47,8 +47,14 @@ function displayForcast() {
   forcastElement.innerHTML = forcastHTML;
 }
 
+function getForcast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "830dc77e57fb6a652a14c00f66be12a9";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForcast);
+}
+
 function dispalyTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   celsiusTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
@@ -71,6 +77,7 @@ function dispalyTemperature(response) {
     "alt",
     `https://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`
   );
+  getForcast(response.data.coord);
 }
 
 function search(city) {
@@ -114,5 +121,4 @@ fahrenheitLink.addEventListener("click", showfahrenheitTemp);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showcelsiusTemp);
 search("Moscow");
-
 displayForcast();
