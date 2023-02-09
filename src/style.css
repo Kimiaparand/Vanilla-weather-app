@@ -62,3 +62,19 @@ li ::first-letter {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
+
+.weather-forcast {
+  margin: 20px;
+  text-align: center;
+  color: #000;
+}
+.weather-forcast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.weather-forcast-temperatures-min {
+  opacity: 0.5;
+}
+.weather-forcast-temperatures {
+  font-size: 13px;
+}
